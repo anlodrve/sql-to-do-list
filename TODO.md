@@ -7,7 +7,7 @@ DOCUMENT SET UP:
     [x] add public folder
     [x] add scripts folder
     [x] add client.js file
-    [] add client.js to html
+    [x] add client.js to html
     [x] add styles folder
     [x] create css file 
     [x] source css into html file
@@ -36,10 +36,10 @@ HTML HARD CODE
 
 
 CODE SETUP IN ROUTER
-    [] const express = require('express');
-    [] const router = express.Router();
-    [] const pool = require('../modules/pool');
-    [] module.exports = router;
+    [x] const express = require('express');
+    [x] const router = express.Router();
+    [x] const pool = require('../modules/pool');
+    [x] module.exports = router;
 
 CODE SETUP IN SERVER
     [x] const express = require('express');
@@ -73,11 +73,11 @@ CODE SET UP IN POOL.JS
 DATABASE
     [x] create database in positico
     [x] create table in database
-    [] create sql to populate database with current inventory
-    [] Add code to SQL file in project
+    [x] create sql to populate database with current inventory
+    [x] Add code to SQL file in project
 
 CLIENT SIDE
-    [] Create function with get request to get all data from database and call render 
+    [x] Create function with get request to get all data from database and call render 
         -GET ajax.then.catch codeblock
     [] Create task object from input fields (.val) to send as data in POST request
     [] Create post function to send new tasks to server/database
