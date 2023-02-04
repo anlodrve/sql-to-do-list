@@ -59,6 +59,7 @@ CODE SETUP IN SERVER
 CODE SETUP IN CLIENT
     [x] $(document).ready(function(){ });
     [x] event handlers function in onready
+    [] add get function to onReady to have database data on page load
 
 
 CODE SET UP IN POOL.JS
