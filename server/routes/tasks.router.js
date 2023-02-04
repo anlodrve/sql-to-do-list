@@ -5,16 +5,13 @@ const pool = require('../public/modules/pool');
 
 //GET serverside
 tasksRouter.get("/", (req, res) => {
-    let sqlQuery = `
-      SELECT * FROM tasks
-      ORDER BY "id" ASC
-      `;
-    pool
-      .query(sqlQuery)
-      .then((dbRes) => {
+    let sqlQuery = `SELECT * FROM tasks
+                    ORDER BY id ASC`;
+    pool.query(sqlQuery)
+    .then((dbRes) => {
         res.send(dbRes.rows);
       })
-      .catch((err) => {
+    .catch((err) => {
         console.log("Error Database failed", err);
         res.sendStatus(500);
       });

@@ -6,8 +6,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // router call
 const tasksRouter = require('./routes/tasks.router.js');
-// set url 
-app.use('/tasks', tasksRouter);
+// set url
+app.use("/tasks", tasksRouter);
 
 //static files 
 app.use(express.static('server/public'))
