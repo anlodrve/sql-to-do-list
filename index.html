@@ -15,7 +15,26 @@
     </header>
     <main>
         <section id="inputs">
-            
+            <h3>ADD A TASK</h3>
+            <div>Title</div><div><input type="text" id="titleIn"></div> 
+            <div>Details</div><div><input type="text" id="detailsIn"></div>
+            <div>Due Date</div><div><input type="text" id="dueDateIn"></div>
+            <div>Complete?</div> <div><input type="text" id="completeIn"></div>
+        </section>
+        <section id="allTasks">
+            <h3>MY TO-DOs</h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Details</th>
+                        <th>Due Date</th>
+                        <th>Complete?</th>
+                    </tr>
+                    </thead>
+                <tbody id="displayTasks">
+                </tbody>
+            </table>
         </section>
     </main>
 </body>

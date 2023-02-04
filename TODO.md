@@ -42,32 +42,32 @@ CODE SETUP IN ROUTER
     [] module.exports = router;
 
 CODE SETUP IN SERVER
-    [] const express = require('express');
-    [] const bodyParser = require('body-parser');
-    [] const app = express();
-    [] app.use(bodyParser.urlencoded({extended: true}));
-    [] const **NAME OF VARIABLE**Router = require('./routes/**NAME OF FILE**.router.js');
-    [] app.use('/URL', **NAME OF VARIABLE**Router);
-    [] // Serve back static files by default
+    [x] const express = require('express');
+    [x] const bodyParser = require('body-parser');
+    [x] const app = express();
+    [x] app.use(bodyParser.urlencoded({extended: true}));
+    [x] const **NAME OF VARIABLE**Router = require('./routes/**NAME OF FILE**.router.js');
+    [x] app.use('/URL', **NAME OF VARIABLE**Router);
+    [x] // Serve back static files by default
         app.use(express.static('server/public'))
-    [] // Start listening for requests on a specific port
+    [x] // Start listening for requests on a specific port
         const PORT = process.env.PORT || 5000;
-    [] app.listen(PORT, () => {
+    [x] app.listen(PORT, () => {
             console.log('listening on port', PORT);
         });
 
 CODE SETUP IN CLIENT
-    [] $(document).ready(function(){ });
-    [] event handlers function in onready
+    [x] $(document).ready(function(){ });
+    [x] event handlers function in onready
 
 
 CODE SET UP IN POOL.JS
-    [] const pg = require('pg');
-    [] let pool = new pg.Pool({
+    [x] const pg = require('pg');
+    [x] let pool = new pg.Pool({
         host: 'localhost',
         port: 5432,
-        database: 'awesome_reads', 
-    [] module.exports = pool;
+        database: '***NAME OF DATABASE***', 
+    [x] module.exports = pool;
 
 DATABASE
     [x] create database in positico
