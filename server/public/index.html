@@ -16,25 +16,16 @@
     <main>
         <section id="inputs">
             <h3>ADD A TASK</h3>
-            <label>Title</label><div><input type="text" id="titleIn" value="">
-            <label>Details</label><input type="text" id="detailsIn" value="">
-            <label>Due Date</label><input type="text" id="dueDateIn" value="">
-            <label>Complete?</label><input type="text" id="completeIn" value="">
+            <input type="text" id="titleIn" value="" placeholder="Task name">
+            <input type="text" id="detailsIn" value="" placeholder="Details">
+            <input type="date" id="dueDateIn" value="" placeholder="Due Date">
+            <input type="text" id="completeIn" value="" placeholder="Complete?">
+            <button id="addTaskButton">Add!</button>
         </section>
         <section id="allTasks">
-            <h3>MY TO-DOs</h3>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Details</th>
-                        <th>Due Date</th>
-                        <th>Complete?</th>
-                    </tr>
-                    </thead>
-                <tbody id="displayTasks">
-                </tbody>
-            </table>
+                <container id="addedTaskList">
+                    <div></div>
+                </container>
         </section>
     </main>
 </body>

@@ -1,0 +1,28 @@
+
+
+#allTasks{
+    text-align: center;
+    float: right; 
+}
+
+header{
+
+    size: 500px;
+    text-align: right;
+}
+
+h1{
+    size: 800px; 
+}
+
+#inputs{
+    border: 1px solid; 
+    width: 150px;
+    float: left;
+}
+
+.taskContainer{
+    padding: 20px;
+    text-align: left;
+    width: 300px; 
+}

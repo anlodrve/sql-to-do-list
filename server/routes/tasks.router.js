@@ -22,15 +22,15 @@ tasksRouter.get("/", (req, res) => {
 tasksRouter.post("/", (req, res) => {
     const newTask = req.body;
     
-    const queryText = `
-        INSERT INTO "tasks" ("title", "details", "dueDate", "completed")
+    const queryText = 
+        `INSERT INTO "tasks" ("title", "details", "due_date", "complete")
         VALUES ($1, $2, $3, $4)`;
 
     const queryParams = [
         newTask.title,
         newTask.details,
-        newTask.dueDate,
-        newTask.completed,
+        newTask.due_date,
+        newTask.complete,
         ];
 
     pool.query(queryText, queryParams)

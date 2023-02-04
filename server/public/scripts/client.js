@@ -3,11 +3,12 @@ $(document).ready(function(){
     eventListeners();
 
     //show existing data on page load
-    getTask
+    getTask();
  });
    
 function eventListeners () {
-    console.log('in event listener function')
+    console.log('in event listener function');
+    $('#addTaskButton').on('click', postTask);
  };
 
 // get function
@@ -33,7 +34,7 @@ function postTask() {
     const taskObject = {
         title: $('#titleIn').val(),
         details: $('#detailsIn').val(), 
-        dueDate: $('#dueDateIn').val(),
+        due_date: $('#dueDateIn').val(),
         complete: $('#completeIn').val(),
     }
     console.log('in postTask, heres the task:', taskObject);
@@ -58,6 +59,17 @@ function postTask() {
 // put function
 
 // render 
-function renderTasks () {
+// Input is an array
+function renderTasks (tasks) {
     console.log('in render');
-}
+for(let i = 0; i < tasks.length; i += 1) {
+ $('#addedTaskList').append(`
+        <div class="taskContainer" data-id=${tasks[i].id} data-isCompleted=${tasks[i].complete}>
+           <div class="taskList">${tasks[i].title}</div>
+           <div class="taskList">${tasks[i].details}</div>
+           <div class="taskList">${tasks[i].due_date}</div>
+           <div class="taskList">${tasks[i].complete}</div>
+        </div> 
+     `)
+    }
+};
