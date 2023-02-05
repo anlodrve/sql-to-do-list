@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
     //event listener function call
     eventListeners();
@@ -61,7 +62,24 @@ function postTask() {
 
 
 // delete function
-function deleteTask() {
+function deleteTask(event) {
+    swal({
+        title: "Are you sure you want to delete this task?",
+        text: "Once it's gone, it's gone forever! 😿",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal("Your task is toast! 🍞", {
+            icon: "success",
+          });
+        } else {
+          swal("Your task was not deleted.");
+        }
+      });
+
     let id = $(this).parents('div').data('id')
 
     $.ajax({
@@ -105,7 +123,6 @@ console.log(id, checked);
 // Input is an array
 function renderTasks (tasks) {
  $('#addedTaskList').empty();
-
 
     console.log('in render');
 for(let task of tasks) {
