@@ -79,42 +79,42 @@ DATABASE
 CLIENT SIDE
     [x] Create function with get request to get all data from database and call render 
         -GET ajax.then.catch codeblock
-    [] Create task object from input fields (.val) to send as data in POST request
-    [] Create post function to send new tasks to server/database
+    [x] Create task object from input fields (.val) to send as data in POST request
+    [x] Create post function to send new tasks to server/database
         - POST ajax.then.catch codeblock
         -.catch calls GET function 
     [] Create PUT function to update task to COMPLETE
         -.catch calls GET function 
-    [] Create DELETE function to delete task from DOM *AND* database 
-    [] Create render function and append changes to the DOM 
-        [] empty dom each time 
-        [] loop
+    [x] Create DELETE function to delete task from DOM *AND* database 
+    [x] Create render function and append changes to the DOM 
+        [x] empty dom each time 
+        [x] loop
     [] add event listeners for appended elements 
 
 SERVER SIDE 
-    [] GET -- Link ajax Get from client to items from DB
-            - [] Create query text
-                - [] SELECT * FROM "tablename"
-            - [] call pool.queryText.then.catch code block
-    [] POST -- link ajax post from client send new items to DB
-            - [] Create query text
-                - [] Takes query text from ajax post.
-                    [] set variableName = req.body; then queryParams will be an array with attributes of variableName. parameter]
-                    - [] INSERT INTO "tablename" (...) VALUES ...
-                    - [] Use array with ($1 $2) to avoid injection
+    [x] GET -- Link ajax Get from client to items from DB
+            - [x] Create query text
+                - [x] SELECT * FROM "tablename"
+            - [x] call pool.queryText.then.catch code block
+    [x] POST -- link ajax post from client send new items to DB
+            - [x] Create query text
+                - [x] Takes query text from ajax post.
+                    [x] set variableName = req.body; then queryParams will be an array with attributes of variableName. parameter]
+                    - [x] INSERT INTO "tablename" (...) VALUES ...
+                    - [x] Use array with ($1 $2) to avoid injection
     [] PUT -- updates to tasks "Complete" 
             - [] Create query text
                 - [] Takes query text from ajax PUT.
                     - [] UPDATE "tablename" SET "complete" = NOT "complete" WHERE "id" = $2
                     - [] Use array with ($1 $2) to avoid injection
                     - use "complete" = NOT "complete" to use button that can toggle
-    [] DELETE - delete task from DB 
-            -[] Create query text
-                [] takes request from ajax DELETE
-                    [] `DELETE FROM "tablename"
+    [x] DELETE - delete task from DB 
+            -[x] Create query text
+                [x] takes request from ajax DELETE
+                    [x] `DELETE FROM "tablename"
                         WHERE "id" = $1;`;
-                    [] set variable equal to  req.params.id;
-                    [] Use array with ($1 $2) to avoid injection
+                    [x] set variable equal to  req.params.id;
+                    [x] Use array with ($1 $2) to avoid injection
 
 
 Create a Task - a post request to add the Task to the database

@@ -5,8 +5,9 @@ const pool = require('../public/modules/pool');
 
 //GET serverside
 tasksRouter.get("/", (req, res) => {
-    let sqlQuery = `SELECT * FROM tasks
-                    ORDER BY id ASC`;
+    let sqlQuery = 
+        `SELECT * FROM tasks
+        ORDER BY id ASC`;
     pool.query(sqlQuery)
     .then((dbRes) => {
         res.send(dbRes.rows);
@@ -45,11 +46,42 @@ tasksRouter.post("/", (req, res) => {
 })
 
 //DELETE serverside
+tasksRouter.delete('/:id', (req, res) => {
+    console.log('in delete on server');
+    const queryText = 
+          `DELETE FROM "tasks"
+          WHERE id = $1;`;
+
+    const queryParams = [req.params.id];
+    pool.query(queryText, queryParams)
+    .then((dbRes) => {
+        res.sendStatus(204);
+    })
+    .catch((err) => {
+      console.log('DELETE /book/:id failed', err);
+      res.sendStatus(500); 
+    })
+})
 
 
 //PUT serverside 
-
-
+tasksRouter.put("/:id", (req, res) => {
+    console.log("in put on server");
+  
+    const queryText = `
+          UPDATE tasks
+          SET complete = NOT complete
+          WHERE id = $1
+          `;
+    const queryParams = [req.params.id];
+    pool.query(queryText, queryParams)
+    .then((dbRes) => {
+        res.sendStatus(204);
+      })
+      .catch((err) => {
+        console.log("error in server PUT:", err);
+      });
+  });
 
 
 
