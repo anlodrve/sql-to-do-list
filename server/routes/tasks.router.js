@@ -70,11 +70,10 @@ tasksRouter.put("/:id", (req, res) => {
   
     const queryText = `
           UPDATE tasks
-          SET complete = NOT complete
-          WHERE id = $1
-          ORDER BY complete DESC
+          SET complete = $1
+          WHERE id = $2
           `;
-    const queryParams = [req.params.id];
+    const queryParams = [req.body.complete, req.params.id];
     pool.query(queryText, queryParams)
     .then((dbRes) => {
         res.sendStatus(204);

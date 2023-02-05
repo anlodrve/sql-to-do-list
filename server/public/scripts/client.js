@@ -30,6 +30,10 @@ function getTask() {
         });
 }
 
+function formatDate(){
+
+}
+
 // post function
 function postTask() {
 // create the object to post 
@@ -76,13 +80,17 @@ function deleteTask() {
 
 
 // put function
-function markComplete() {
+function markComplete(event) {
+    event.preventDefault();
+    console.log('in put on client')
     let id = $(this).parents("div").data("id");
-    let markedComplete = $(this).parents("div").data("isCompleted");
+    const checked = $(this).is(":checked");
+
+console.log(id, checked);
     $.ajax({
       method: "PUT",
       url: `/tasks/${id}`,
-      data: markedComplete,
+      data: {complete: checked}
     })
       .then(() => {
         getTask();
@@ -98,19 +106,24 @@ function markComplete() {
 function renderTasks (tasks) {
  $('#addedTaskList').empty();
 
-    console.log('in render');
-for(let i = 0; i < tasks.length; i += 1) {
-    let task= tasks[i]
 
-   
- $('#addedTaskList').append(`
-        <div class="taskContainer" data-id=${tasks[i].id} data-isCompleted=${tasks[i].complete}>
-        <input type="checkbox" class="completeButton" name="completeCheck" value="${tasks[i].complete}"> 
-        <button class="deleteButton">❌</button> 
-        <div class="taskList" id="taskTitle">${tasks[i].title}</div>
-           <div class="taskList" id="taskDetails">${tasks[i].details}</div>
-           <div class="taskList" id="taskDueDate">Due: ${tasks[i].due_date}</div>
-        </div> 
-     `)
+    console.log('in render');
+for(let task of tasks) {
+    let checkedVariable = '';
+    const dateConvert = new Date(task.due_date).toLocaleDateString(`en-us`, { weekday:`long`, year:`numeric`, month:`short`, day:`numeric`});
+
+    if(task.complete){
+        checkedVariable = "checked"
     }
+    
+ $('#addedTaskList').append(`
+    <div class="taskContainer ${checkedVariable}" data-id=${task.id} data-completed=${task.complete}>
+        <input type="checkbox" id="${task.id}" class="completeButton" name="completeCheck" ${checkedVariable}/>
+        <button class="deleteButton">❌</button> 
+        <div class="taskList" id="taskTitle">${task.title}</div>
+        <div class="taskList" id="taskDetails">${task.details}</div>
+        <div class="taskList" id="taskDueDate">Due: ${dateConvert}</div>
+    </div> 
+     `)
 };
+}
