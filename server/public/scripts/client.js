@@ -31,9 +31,6 @@ function getTask() {
         });
 }
 
-function formatDate(){
-
-}
 
 // post function
 function postTask() {
@@ -42,8 +39,22 @@ function postTask() {
         title: $('#titleIn').val(),
         details: $('#detailsIn').val(), 
         due_date: $('#dueDateIn').val(),
-        complete: $('#completeIn').val(),
+        complete: false,
     }
+// require all fields
+    if (
+        $('#titleIn').val() == "" ||
+        $('#detailsIn').val() == "" ||
+        $('#dueDateIn').val() == ""
+        ){
+            swal("All fields are required!");
+          } 
+    else{
+        $('#titleIn').val(""),
+        $('#detailsIn').val(""),
+        $('#dueDateIn').val("")
+        };
+
     console.log('in postTask, heres the task:', taskObject);
 // ajax.then.catch
     $.ajax({
@@ -62,26 +73,9 @@ function postTask() {
 
 
 // delete function
-function deleteTask(event) {
-    swal({
-        title: "Are you sure you want to delete this task?",
-        text: "Once it's gone, it's gone forever! 😿",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      })
-      .then((willDelete) => {
-        if (willDelete) {
-          swal("Your task is toast! 🍞", {
-            icon: "success",
-          });
-        } else {
-          swal("Your task was not deleted.");
-        }
-      });
 
-    let id = $(this).parents('div').data('id')
-
+function deleteTask(event){
+  let id = $(this).parents('div').data('id')
     $.ajax({
         method: 'DELETE',
         url: `/tasks/${id}`
@@ -130,17 +124,40 @@ for(let task of tasks) {
     const dateConvert = new Date(task.due_date).toLocaleDateString(`en-us`, { weekday:`long`, year:`numeric`, month:`short`, day:`numeric`});
 
     if(task.complete){
-        checkedVariable = "checked"
+        checkedVariable = "checked"; 
     }
-    
- $('#addedTaskList').append(`
-    <div class="taskContainer ${checkedVariable}" data-id=${task.id} data-completed=${task.complete}>
-        <input type="checkbox" id="${task.id}" class="completeButton" name="completeCheck" ${checkedVariable}/>
-        <button class="deleteButton">❌</button> 
-        <div class="taskList" id="taskTitle">${task.title}</div>
-        <div class="taskList" id="taskDetails">${task.details}</div>
-        <div class="taskList" id="taskDueDate">Due: ${dateConvert}</div>
-    </div> 
-     `)
+
+$('#addedTaskList').append(`
+   <div class="taskContainer ${checkedVariable}" data-id=${task.id} data-completed=${task.complete}>
+       <input type="checkbox" id="${task.id}" class="completeButton" name="completeCheck" ${checkedVariable}/>
+       <button class="deleteButton">❌</button> 
+       <div class="taskList" id="taskTitle">${task.title}</div>
+       <div class="taskList" id="taskDetails">${task.details}</div>
+       <div class="taskList" id="taskDueDate">Due: ${dateConvert}</div>
+   </div> 
+    `)
+   } 
 };
-}
+
+
+// stretch goal sweet alert 
+// function pre_deleteTask(event) {
+    //     swal({
+    //         title: "Are you sure you want to delete this task?",
+    //         text: "Once it's gone, it's gone forever! 😿",
+    //         icon: "warning",
+    //         buttons: true,
+    //         dangerMode: true,
+    //       })
+    //       .then((willDelete) => {
+    //         if (willDelete) {
+    //           swal("Your task is toast! 🍞", {
+    //             icon: "success",
+    //           });
+    //           deleteTask(event);
+    //         } else if (!willDelete){
+    //           swal("Your task was not deleted.");
+    //         }
+    //         getTask(); 
+    //       });
+    //     }

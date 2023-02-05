@@ -6,8 +6,8 @@ body{
 
 #allTasks{
     text-align: center;
-    float: right; 
-    margin-right: 400px; 
+    float: center; 
+    margin-left: 400px; 
 }
 
 header{
@@ -26,6 +26,8 @@ h1{
     width: 250px;
     padding: 30px;
     margin-left:60px; 
+    margin-right: 500px; 
+    position: fixed;
     float: left;
     font-family: 'Roboto', sans-serif;
     text-align: center; 
@@ -60,18 +62,16 @@ input{
 
 }
 
-#addedTaskList{
-    display: inline-flexbox;
-}
-
 .taskContainer{
     padding: 20px;
     text-align: left;
     width: 400px; 
+    height: auto;
     border: 4px solid; 
     border-color: chartreuse;
     background-color: rgb(208, 254, 161);
     margin: 10px; 
+    display: inline-block;
 }
 
 .taskList{
@@ -108,5 +108,6 @@ input{
 
 .deleteButton{
     float: right; 
+    margin:10px; 
 }
 
