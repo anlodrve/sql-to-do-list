@@ -102,13 +102,14 @@ function renderTasks (tasks) {
 for(let i = 0; i < tasks.length; i += 1) {
     let task= tasks[i]
 
+   
  $('#addedTaskList').append(`
         <div class="taskContainer" data-id=${tasks[i].id} data-isCompleted=${tasks[i].complete}>
-        <input type="checkbox" class="completeButton" name="completeCheck" value="${tasks[i].complete}">  
+        <input type="checkbox" class="completeButton" name="completeCheck" value="${tasks[i].complete}"> 
+        <button class="deleteButton">❌</button> 
         <div class="taskList" id="taskTitle">${tasks[i].title}</div>
            <div class="taskList" id="taskDetails">${tasks[i].details}</div>
            <div class="taskList" id="taskDueDate">Due: ${tasks[i].due_date}</div>
-           <button class="deleteButton">Delete Task</button>
         </div> 
      `)
     }
