@@ -10,6 +10,7 @@ function eventListeners () {
     console.log('in event listener function');
     $('#addTaskButton').on('click', postTask);
     $(document).on('click', '.deleteButton', deleteTask);
+    $(document).on('click', '.completeButton', markComplete);
  };
 
 // get function
@@ -77,7 +78,7 @@ function deleteTask() {
 // put function
 function markComplete() {
     let id = $(this).parents("div").data("id");
-    let markedComplete = $(this).parents("tr").data("isCompleted");
+    let markedComplete = $(this).parents("div").data("isCompleted");
     $.ajax({
       method: "PUT",
       url: `/tasks/${id}`,
@@ -89,7 +90,6 @@ function markComplete() {
       .catch((err) => {
         console.log("PUT failed", err);
       });
-  }
 }
 
 
@@ -100,12 +100,14 @@ function renderTasks (tasks) {
 
     console.log('in render');
 for(let i = 0; i < tasks.length; i += 1) {
+    let task= tasks[i]
+
  $('#addedTaskList').append(`
         <div class="taskContainer" data-id=${tasks[i].id} data-isCompleted=${tasks[i].complete}>
-           <div class="taskList" id="taskTitle">${tasks[i].title}</div>
+        <input type="checkbox" class="completeButton" name="completeCheck" value="${tasks[i].complete}">  
+        <div class="taskList" id="taskTitle">${tasks[i].title}</div>
            <div class="taskList" id="taskDetails">${tasks[i].details}</div>
            <div class="taskList" id="taskDueDate">Due: ${tasks[i].due_date}</div>
-           <div class="taskList" id="taskComplete"> Completed? ${tasks[i].complete}</div>
            <button class="deleteButton">Delete Task</button>
         </div> 
      `)

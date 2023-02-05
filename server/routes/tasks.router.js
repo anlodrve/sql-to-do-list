@@ -72,6 +72,7 @@ tasksRouter.put("/:id", (req, res) => {
           UPDATE tasks
           SET complete = NOT complete
           WHERE id = $1
+          ORDER BY complete DESC
           `;
     const queryParams = [req.params.id];
     pool.query(queryText, queryParams)
@@ -82,10 +83,5 @@ tasksRouter.put("/:id", (req, res) => {
         console.log("error in server PUT:", err);
       });
   });
-
-
-
-
-
 
 module.exports = tasksRouter;
