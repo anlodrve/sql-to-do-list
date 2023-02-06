@@ -58,7 +58,7 @@ tasksRouter.delete('/:id', (req, res) => {
         res.sendStatus(204);
     })
     .catch((err) => {
-      console.log('DELETE /book/:id failed', err);
+      console.log('error in DELETE on server failed', err);
       res.sendStatus(500); 
     })
 })
